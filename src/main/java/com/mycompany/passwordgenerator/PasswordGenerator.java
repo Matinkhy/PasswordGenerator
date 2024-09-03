@@ -9,23 +9,30 @@ public class PasswordGenerator {
 
     public static void main(String[] args) {
 
-        int lengthCounter = 0, random;
+        int lengthCounter = 0, random, length;
         String Generatedpassword = "";
-        
+
         String lengthStr = JOptionPane.showInputDialog("How many characters do you want your password to be? (recommended 8+)");
+        length = Integer.parseInt(lengthStr);
 
-        while (Integer.parseInt(lengthStr) != lengthCounter) {
+        while (length != lengthCounter) {
+            if (length > 26) {
+                JOptionPane.showMessageDialog(null, "Too many characters, try less than 25", "", JOptionPane.ERROR_MESSAGE);
+                lengthStr = JOptionPane.showInputDialog("How many characters do you want your password to be? (recommended 8+)");
+                length = Integer.parseInt(lengthStr);
+            } else {
+                
+                random = rand.nextInt(39, 123);
+                if (random < 48) {
+                    random += 10;
+                }
+                if ((random < 57 || random > 65) && (random < 90 || random > 97)) {
 
-            random = rand.nextInt(39, 123);
-            if (random < 48) {
-                random += 10;
+                    Generatedpassword = Generatedpassword + (char) random;
+                    lengthCounter++;
+                }
             }
-            if ((random < 57 || random > 65) && (random < 90 || random > 97)) {
-
-                Generatedpassword = Generatedpassword + (char) random;
-                lengthCounter++;
-            }
-
+            
         }
         JOptionPane.showMessageDialog(null, "Your generated password is \n" + Generatedpassword);
     }
