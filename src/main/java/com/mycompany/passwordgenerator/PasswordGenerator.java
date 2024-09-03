@@ -16,8 +16,8 @@ public class PasswordGenerator {
         length = Integer.parseInt(lengthStr);
 
         while (length != lengthCounter) {
-            if (length > 26) {
-                JOptionPane.showMessageDialog(null, "Too many characters, try less than 25", "", JOptionPane.ERROR_MESSAGE);
+            if (length > 25) {
+                JOptionPane.showMessageDialog(null, "Too many characters, try 25 or less", "", JOptionPane.ERROR_MESSAGE);
                 lengthStr = JOptionPane.showInputDialog("How many characters do you want your password to be? (recommended 8+)");
                 length = Integer.parseInt(lengthStr);
             } else {
@@ -27,7 +27,7 @@ public class PasswordGenerator {
                     random += 10;
                 }
                 if ((random < 57 || random > 65) && (random < 90 || random > 97)) {
-
+                    
                     Generatedpassword = Generatedpassword + (char) random;
                     lengthCounter++;
                 }
